@@ -1,6 +1,12 @@
-import { NavLink } from "react-router-dom"
+import { useMemo } from "react"
+import { NavLink , useLocation } from "react-router-dom"
 
 function Header() {
+  const { pathname } = useLocation()
+  const isHome = useMemo(() => pathname === '/', [pathname])
+
+  console.log(isHome)
+
   return (
     <header className="bg-slate-800">
       <div className="mx-auto container px-5 py-16">
@@ -21,6 +27,48 @@ function Header() {
             >Favoritos</NavLink>
           </nav>
         </div>
+
+        {isHome && (
+          <form
+            className="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6"
+          >
+            <div className="space-y-4">
+              <label
+                htmlFor="ingredient"
+                className="block text-white uppercase font-extrabold text-lg"
+              >Nombre o Ingredientes</label>
+
+              <input
+                id="ingredient"
+                type="text"
+                name="ingredient"
+                className="bg-white p-3 w-full rounded-lg focus:outline-none"
+                placeholder="Nombre o Ingredientes. Ej. Vodka, Tequila, Café"
+              />
+            </div>
+
+            <div className="space-y-4">
+              <label
+                htmlFor="ingredient"
+                className="block text-white uppercase font-extrabold text-lg"
+              >Categoría</label>
+
+              <select
+                id="category"
+                name="category"
+                className="bg-white  p-3 w-full rounded-lg focus:outline-none"
+              >
+                <option value="">-- Seleccione --</option>
+              </select>
+            </div>
+
+            <input
+              type="submit"
+              value="Buscar Recetas"
+              className="cursor-pointer py-3 bg-orange-800 hover:bg-orange-900 text-white font-extrabold w-full rounded-lg uppercase"
+            />
+          </form>
+        )}
       </div>
     </header>
   )
