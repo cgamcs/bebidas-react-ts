@@ -3,7 +3,7 @@ import Header from "../components/Header"
 function IndexPage() {
   return (
     <>
-      <Header />
+      <h1>IndexPage</h1>
     </>
   )
 }
