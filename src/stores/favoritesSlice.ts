@@ -1,14 +1,14 @@
 import type { StateCreator } from "zustand"
 import type { Recipe } from "../types"
 
-export type FavoritesSliceTpe = {
+export type FavoritesSliceType = {
   favorites: Recipe[]
   handleClickFavorite: (recipe: Recipe) => void
   favoriteExist: (id: Recipe['idDrink']) => boolean
   loadFromStorage: () => void
 }
 
-export const createFavoritesSlice : StateCreator<FavoritesSliceTpe> = (set, get) => ({
+export const createFavoritesSlice : StateCreator<FavoritesSliceType> = (set, get) => ({
   favorites: [],
   handleClickFavorite: (recipe) => {
     if(get().favorites.some(favorite => favorite.idDrink === recipe.idDrink)) {
