@@ -10,7 +10,16 @@ export default {
         // model: openRouter("tngtech/deepseek-r1t2-chimera:free"),
         // model: openRouter("qwen/qwen3-coder:free"),
         model: openRouter("google/gemma-3-27b-it:free"),
-        prompt,
+        messages: [
+          {
+            "role": "system",
+            "content": "Eres un barista, al que le preguntan por recetas de bebidas, responde de manera corta y agradable, si preguntan por algo que no se una receta responde de forma negativa pero comica. No preguntes algo retrospectivo porque son dudas 1 a 1."
+          },
+          {
+            "role": "user",
+            "content": prompt
+          }
+        ],
         maxRetries: 3,
       })
 

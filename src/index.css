@@ -7,3 +7,8 @@
     background-position: center;
   }
 }
+
+ul {
+  list-style: circle;
+  padding: 0 1.5rem;
+}
