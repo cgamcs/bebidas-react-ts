@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from "react"
 import { NavLink , useLocation } from "react-router-dom"
 import { useAppStore } from "../stores/useAppStore"
-import { createNotificationSlice } from "../stores/notificationSlice"
 
 const initialState = {
   ingredient: '',
