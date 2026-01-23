@@ -5,15 +5,16 @@ export default {
   async generateRecipe(prompt: string) {
     try {
       const result = streamText({
-        model: openRouter("meta-llama/llama-3.3-70b-instruct:free"),
+        // model: openRouter("tngtech/deepseek-r1t2-chimera:free"),
+        // model: openRouter("z-ai/glm-4.5-air:free"),
+        // model: openRouter("tngtech/deepseek-r1t2-chimera:free"),
+        // model: openRouter("qwen/qwen3-coder:free"),
+        model: openRouter("google/gemma-3-27b-it:free"),
         prompt,
         maxRetries: 3,
       })
 
-      // Para ver el resultado del stream
-      for await (const textPart of result.textStream) {
-        console.log(textPart)
-      }
+      return result.textStream
     } catch (e) {
       console.error(e)
     }
