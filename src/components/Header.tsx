@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from "react"
 import { NavLink , useLocation } from "react-router-dom"
 import { useAppStore } from "../stores/useAppStore"
+import { createNotificationSlice } from "../stores/notificationSlice"
 
 const initialState = {
   ingredient: '',
@@ -17,6 +18,8 @@ function Header() {
   const { drinks } = categories
   const searchRecipes = useAppStore((state) => state.searchRecipes)
 
+  const showNotification = useAppStore((state) => state.showNotification)
+
   useEffect(() => {
     fetchCategories()
   }, [])
@@ -31,9 +34,11 @@ function Header() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // TODO: Validar
     if(Object.values(searchFilters).includes('')) {
-      console.log('Todos los campos son obligatorios')
+      showNotification({
+        text: 'Todos los campos son obligatorios',
+        error: true
+      })
       return
     }
 
