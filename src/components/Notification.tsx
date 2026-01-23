@@ -6,6 +6,7 @@ import { useAppStore } from '../stores/useAppStore'
 
 export default function Notification() {
   const notification = useAppStore((state) => state.notification)
+  const hideNotification = useAppStore((state) => state.hideNotification)
 
   return (
     <div
@@ -35,13 +36,13 @@ export default function Notification() {
                 </div>
                 <div className="ml-3 w-0 flex-1 pt-0.5">
                   <p className="text-sm font-medium text-gray-900">Notificación</p>
-                  <p className="mt-1 text-sm text-gray-500"></p>
+                  <p className="mt-1 text-sm text-gray-500">{notification.text}</p>
                 </div>
                 <div className="ml-4 flex shrink-0">
                   <button
                     type="button"
                     className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    onClick={() => { }}
+                    onClick={hideNotification}
                   >
                     <span className="sr-only">Cerrar</span>
                     <XMarkIcon className="h-5 w-5" aria-hidden="true" />
